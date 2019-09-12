@@ -6,7 +6,8 @@
 
 body {
     margin: 20px 0;
-    background: #f0db4f;
+    background: #ffeb6d;
+    /* background: #f0db4f; */
 }
 
 .grid {
@@ -38,12 +39,15 @@ body {
 }
 
 .front {
-    background-color: black;
+    /* background: #94bbe9; */
+    background: #71a8e9;
+    border-radius: 10px;
+    /* border: 3px white solid; */
 }
 
 .back {
     transform: rotateY(180deg);
-    background-color: #f0db4f;
+    background-color: #ffeb6d;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -54,5 +58,5 @@ body {
 }
 
 .match .front { 
-    background:#f0db4f !important;
+    background:#ffeb6d !important;
 }
