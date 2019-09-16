@@ -144,3 +144,28 @@ grid.addEventListener('click', function(event){
         previousTarget = clicked;
     }
 });
+
+//modal
+var modal = document.querySelector('.modal');
+var modalBtn = document.querySelector('.modal-button');
+var closeBtn = document.querySelector('.close-button')
+var playBtn = document.querySelector('.play-again');
+
+modalBtn.addEventListener('click', openModal);
+closeBtn.addEventListener('click', closeModal);
+playBtn.addEventListener('click', closeModal);
+window.addEventListener('click', outsideClick);
+
+function openModal(){
+    modal.style.display = 'block';
+}
+
+function closeModal(){
+    modal.style.display = 'none';
+}
+
+function outsideClick(e){
+    if(e.target == modal){
+        closeModal();
+    }
+}

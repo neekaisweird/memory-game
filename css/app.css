@@ -60,3 +60,73 @@ body {
 .match .front { 
     background:#ffeb6d !important;
 }
+
+.modal {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+}
+
+.modal-box {
+    background: white;
+    margin: 200px auto;
+    width: 500px;
+    height: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px 0 rgba(0,0,0,0.5), 2px 10px 30px 0 rgba(0,0,0,0.5); 
+    animation: fadein .5s;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+
+}
+
+.close-button {
+    margin-left: 475px;
+    font-size: 25px;
+    font-weight: 700;
+    color: gray;
+    cursor: pointer;
+}
+
+.close-button:hover, .close-button:focus {
+    color: black;
+}
+
+.play-again {
+    width: 175px;
+    height: 50px;
+    background: #5fc39e;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-body h1 {
+    font-weight: 400;
+}
+
+.modal-body img {
+    width: 75px;
+}
+
+@keyframes fadein {
+    0%{opacity: .5; transform: scale(0,0)}
+    100%{opacity: 1; transform: scale(100%,100%)}
+}
+
