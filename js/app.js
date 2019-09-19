@@ -109,6 +109,7 @@ const resetGuesses = () => {
     firstGuess = '';
     secondGuess = '';
     count = 0;
+    previousTarget = null;
 
     var selected = document.querySelectorAll('.selected');
     selected.forEach(card => {
@@ -119,7 +120,7 @@ const resetGuesses = () => {
 //add event listener to grid and apply selected class to divs
 grid.addEventListener('click', function(event){
     let clicked = event.target;
-    if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected')){
+    if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match') ){
         return
     }
     if (count < 2) {
