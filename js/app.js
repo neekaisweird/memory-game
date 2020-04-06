@@ -1,5 +1,5 @@
 // cards
-const cardsArray = [
+const allCards = [
   {
     name: 'bulldog',
     img: 'img/bulldog.png'
@@ -70,8 +70,20 @@ let previousTarget;
 let delay;
 let game;
 let grid;
+let numAnimals = 15;
+let cardsArray = [];
 
-const newGame = () => {
+const createCardArray = () => {
+  cardsArray = [];
+  let cards = [...allCards];
+  while (cardsArray.length < numAnimals) {
+    let randomIndex = Math.floor(Math.random() * cards.length);
+    cardsArray.push(cards[randomIndex]);
+    cards.splice(randomIndex, 1);
+  }
+};
+
+const createGameGrid = () => {
   // duplicate cards array
   gameGrid = cardsArray.concat(cardsArray);
   // randomize grid on each reload
@@ -106,9 +118,8 @@ const newGame = () => {
     card.appendChild(front);
     card.appendChild(back);
   });
+  grid.addEventListener('click', addSelected);
 };
-
-newGame();
 
 //loop through selected elements and apply match class
 const match = () => {
@@ -131,7 +142,6 @@ const resetGuesses = () => {
 };
 
 //add event listener to grid and apply selected class to divs
-
 const addSelected = event => {
   let clicked = event.target;
   if (
@@ -163,7 +173,27 @@ const addSelected = event => {
   }
 };
 
-grid.addEventListener('click', addSelected);
+const startNewGame = () => {
+  if (grid) game.removeChild(grid);
+  createCardArray();
+  createGameGrid();
+};
+
+const changeDifficulty = difficulty => {
+  if (difficulty === 'Easy') numAnimals = 6;
+  if (difficulty === 'Medium') numAnimals = 10;
+  if (difficulty === 'Hard') numAnimals = 15;
+};
+
+let difficultyButtons = document.querySelectorAll('.difficulty-button');
+difficultyButtons.forEach(button =>
+  button.addEventListener('click', e => {
+    changeDifficulty(e.target.textContent);
+    startNewGame();
+  })
+);
+
+startNewGame();
 
 //modal
 let modal = document.querySelector('.modal');
@@ -187,10 +217,7 @@ const outsideClick = e => {
 };
 
 const playAgain = () => {
-  //remove old grid and add new one with event listener
-  game.removeChild(grid);
-  newGame();
-  grid.addEventListener('click', addSelected);
+  startNewGame();
   closeModal();
 };
 
