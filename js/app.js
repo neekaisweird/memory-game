@@ -70,6 +70,7 @@ let previousTarget;
 let delay;
 let game;
 let grid;
+let matchedCards;
 let numAnimals = 15;
 let cardsArray = [];
 
@@ -94,6 +95,7 @@ const createGameGrid = () => {
   count = 0;
   previousTarget = null;
   delay = 1200;
+  matchedCards = 0;
 
   // create grid section
   game = document.getElementById('game');
@@ -121,12 +123,18 @@ const createGameGrid = () => {
   grid.addEventListener('click', addSelected);
 };
 
-//loop through selected elements and apply match class
+const checkWinner = () => {
+  if (matchedCards === numAnimals) {
+    modal.style.display = 'block';
+  }
+};
+
 const match = () => {
   let selected = document.querySelectorAll('.selected');
   selected.forEach(card => {
     card.classList.add('match');
   });
+  checkWinner();
 };
 
 const resetGuesses = () => {
@@ -163,6 +171,7 @@ const addSelected = event => {
     }
     if (firstGuess !== '' && secondGuess !== '') {
       if (firstGuess === secondGuess) {
+        matchedCards++;
         setTimeout(match, delay);
         setTimeout(resetGuesses, delay);
       } else {
@@ -179,6 +188,7 @@ const startNewGame = () => {
   createGameGrid();
 };
 
+//difficulty
 const changeDifficulty = difficulty => {
   if (difficulty === 'Easy') numAnimals = 6;
   if (difficulty === 'Medium') numAnimals = 10;
@@ -193,18 +203,10 @@ difficultyButtons.forEach(button =>
   })
 );
 
-startNewGame();
-
 //modal
 let modal = document.querySelector('.modal');
-let modalBtn = document.querySelector('.modal-button');
 let closeBtn = document.querySelector('.close-button');
 let playBtn = document.querySelector('.play-again');
-
-// temporary
-function openModal() {
-  modal.style.display = 'block';
-}
 
 const closeModal = () => {
   modal.style.display = 'none';
@@ -221,7 +223,8 @@ const playAgain = () => {
   closeModal();
 };
 
-modalBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 playBtn.addEventListener('click', playAgain);
 window.addEventListener('click', outsideClick);
+
+startNewGame();
