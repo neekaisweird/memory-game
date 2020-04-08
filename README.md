@@ -1,6 +1,6 @@
 # Memory Game
 
-Memory Game is an animal matching game created in Vanilla JS. I initially followed a tutorial for the memory game, but I added three difficulties, modal/play again button, and different styles. Might add more features (like different images for cards, a count, etc) in the future.
+Memory Game is an animal matching game created in Vanilla JS. I initially followed a tutorial for the memory game, but I added three difficulties, winner modal/play again button, and different styles. I might add more features (like different images for cards, a count, etc) in the future.
 
 ## Mentions
 
