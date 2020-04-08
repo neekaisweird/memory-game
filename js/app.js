@@ -1,4 +1,3 @@
-// cards
 const allCards = [
   {
     name: 'bulldog',
@@ -71,7 +70,7 @@ let delay;
 let game;
 let grid;
 let matchedCards;
-let numAnimals = 15;
+let numAnimals = 10;
 let cardsArray = [];
 
 const createCardArray = () => {
@@ -198,8 +197,17 @@ const changeDifficulty = difficulty => {
 let difficultyButtons = document.querySelectorAll('.difficulty-button');
 difficultyButtons.forEach(button =>
   button.addEventListener('click', e => {
+    document.querySelector('.chosen').classList.remove('chosen');
+    e.target.classList.add('chosen');
     changeDifficulty(e.target.textContent);
-    startNewGame();
+    if (numAnimals > 10) {
+      document.body.classList.add('hard-level');
+      startNewGame();
+    }
+    if (numAnimals < 15) {
+      document.body.classList.remove('hard-level');
+      startNewGame();
+    }
   })
 );
 

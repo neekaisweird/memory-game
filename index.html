@@ -2,32 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Memory Game</title>
-    <link rel="stylesheet" href="css/app.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>
-    <div id="game"></div>
-    <div>
-        <button class="difficulty-button">Easy</button>
-        <button class="difficulty-button">Medium</button>
-        <button class="difficulty-button">Hard</button>
+<body class="normal-level">
+  <header>
+    <h1>Memory Game</h1>
+    <div class="difficulties">
+      <button class="difficulty-button">Easy</button>
+      <button class="difficulty-button chosen">Medium</button>
+      <button class="difficulty-button">Hard</button>
     </div>
-    <div class="modal">
-        <div class="modal-box">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <img src="../img/award.png">
-                <h1>Congratulations!</h1>
-                <button class="play-again">Play Again</button>
-            </div>
-        </div>
+  </header>
+
+  <div id="game"></div>
+  <div class="modal">
+    <div class="modal-box">
+      <button class="close-button" aria-label="Close">&times;</button>
+      <div class="modal-body">
+        <img src="../img/award.png">
+        <h2>Congratulations!</h2>
+        <button class="play-again">Play Again</button>
+      </div>
     </div>
-    <script src="js/app.js"></script>
+  </div>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
